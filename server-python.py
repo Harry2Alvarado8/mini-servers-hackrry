@@ -1,10 +1,16 @@
-# Mini-Servers
+from bottle import route, run
 
-### server-go
-Con esto levantaremos un pequeño servidor web. saber más del framework utilizado https://echo.labstack.com.
+@route('/')
+def index():
+    return 'Index, boom!'
 
-### python-server
+@route('/hello')
+def hello():
+    return 'Hello World, with router "/hello"'
 
+run(host='localhost', port=5050)
+
+"""
 StackOverFlow:
 If you have problem with:
     "ImportError: No module named bottle"
@@ -16,3 +22,4 @@ Guide for example:
 
 Docs Official:
     https://bottlepy.org/docs/dev/
+"""
