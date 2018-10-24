@@ -19,4 +19,6 @@ Docs Official:
 
 ### nodejs-server
 
-Tener instalado el paquete 'express'.
+Tener instalado el paquete 'express', puedes ver más aqui: [Oracle GitHub](https://oracle.github.io/node-oracledb/doc/api.html#getstarted),
+[Oracle Restful](https://www.oracle.com/technetwork/es/articles/database-performance/restful-node-3813084-esa.html),
+[TutorialsPoint](https://www.tutorialspoint.com/nodejs/nodejs_express_framework.htm)
