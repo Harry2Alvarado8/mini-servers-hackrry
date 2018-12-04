@@ -19,6 +19,7 @@ oracledb.getConnection(
        WHERE manager_id = :id`,
       [103],  // bind value for :id
 	  */
+	       // `+data+`
 	  `SELECT NAME, ID, description FROM TS_PROVIDER`,
       function(err, result) {
         if (err) {
