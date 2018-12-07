@@ -23,13 +23,28 @@ function open(sql,binds,dml,rs){
 		if(error(err,rs,null) == -1) return;
 		cn.execute(sql,binds,{autoCommit: dml},function(err,result){
 			if(error(err,rs,cn) == -1) return;
-				rs.contentType('application/json').status(200);
-			if(dml)
-				rs.send(JSON.stringify(result.rowsAffected));
-			else{
-				console.log(result.metaData);
-				rs.send(JSON.stringify(result.rows));
-			}
+				try{
+					rs.contentType('application/json').status(200);
+				}catch(err){
+					console.log("Ha ocurrido algo raro! - application/json");
+				}
+				try{
+					rs.contentType('application/x-www-form-urlencoded').status(200);
+				}catch(err){
+					console.log("Ha ocurrido algo raro! - x-www-form-urlencoded");
+				}
+			
+			try{
+				if(dml)
+					rs.send(JSON.stringify(result.rowsAffected));
+				else{
+					console.log(result.metaData);
+					rs.send(JSON.stringify(result.rows));
+				}
+				}catch(err){
+					console.log("Ha ocurrido algo raro! - rowAffected");
+				}
+
 			close(cn);
 		});
 	})
