@@ -13,8 +13,7 @@ function error(err,rs,cn){
 		rs.send(err.message);
 		if(cn!=null) close(cn);
 		return -1;
-	}
-	else
+	} else
 		return 0;
 }
 
