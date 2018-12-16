@@ -1,7 +1,7 @@
 var objoracle = require('oracledb');
 
 cns = {
-	user: "USER_AUTOPRO",
+	user: "USER_AUTOPRO_2",
 	password: "12345",
 	connectString: "localhost/XE"
 };

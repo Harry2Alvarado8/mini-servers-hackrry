@@ -17,8 +17,8 @@ router.get('/product', function(request, response){
 	var msgg = "el siguiente sql se ha ejecutado: "
 	switch(op){
 		case 1:
-			sql = "SELECT ID,NAME FROM TS_PROVIDER";
-			dao.open(sql,{},false,response);
+			sql = "SELECT ID,codigo,costo,cantidad,nombre FROM PRODUCTO";
+			dao.open(sql,[],false,response);
 			console.log(msgg,sql);
 			break;
 		case 2:
@@ -51,6 +51,7 @@ router.get('/product', function(request, response){
 	}
 response.end;
 });
+
 
 // Create application/x-www-form-urlencoded parser
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
@@ -98,7 +99,6 @@ sql = "INSERT INTO ts_user (name,lastname,email,password,phone,phone_2,"+
    console.log("Se ha ejecutado el insert TS_USER ",response);
    res.end(JSON.stringify(response));
 });
-
 
 app.use(router);
 

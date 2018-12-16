@@ -20,7 +20,7 @@ oracledb.getConnection(
       [103],  // bind value for :id
 	  */
 	       // `+data+`
-	  `SELECT NAME, ID, description FROM TS_PROVIDER`,
+	  `SELECT ID, nombre, costo, codigo FROM producto`,
       function(err, result) {
         if (err) {
           console.error(err.message);
