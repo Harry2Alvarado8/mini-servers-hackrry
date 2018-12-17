@@ -4,7 +4,7 @@ var oracledb = require('oracledb');
 
 oracledb.getConnection(
   {
-    user          : "USER_AUTOPRO",
+    user          : "USER_AUTOPRO_2",
     password      : "12345",
     connectString : "localhost/XE"
   },
@@ -12,21 +12,22 @@ oracledb.getConnection(
     if (err) {
       console.error(err.message);
       return;
-    }
     connection.execute(/*
+    }
       `SELECT manager_id, department_id, department_name
        FROM departments
        WHERE manager_id = :id`,
       [103],  // bind value for :id
 	  */
 	       // `+data+`
-	  `SELECT ID, nombre, costo, codigo FROM producto`,
+	  `SELECT JSON_OBJECT ('id' IS ID, 'nombre' IS nombre, 'costo' IS costo, 'codigo' IS codigo ) FROM producto`,
       function(err, result) {
         if (err) {
           console.error(err.message);
           doRelease(connection);
           return;
         }
+		//var json = JSON.parse(result.rows)
         console.log(result.rows);
         doRelease(connection);
       });

@@ -27,18 +27,21 @@ function open(sql,binds,dml,rs){
 				}catch(err){
 					console.log("Ha ocurrido algo raro! - application/json");
 				}
+				/*
 				try{
 					rs.contentType('application/x-www-form-urlencoded').status(200);
 				}catch(err){
 					console.log("Ha ocurrido algo raro! - x-www-form-urlencoded");
 				}
-			
+			*/
 			try{
 				if(dml)
 					rs.send(JSON.stringify(result.rowsAffected));
 				else{
 					console.log(result.metaData);
+					//rs.send(JSON.stringify(result.rows));
 					rs.send(JSON.stringify(result.rows));
+					//console.log(JSON.stringify(result.rows));
 				}
 				}catch(err){
 					console.log("Ha ocurrido algo raro! - rowAffected");
