@@ -22,6 +22,16 @@ router.get('/prod', function(request, response){
 	response.end;
 });
 
+router.post('/prod', function(request, response){
+	//var op = parseInt(request.query.opc);
+	var msgg = "el siguiente sql se ha ejecutado: ";
+	sql = "SELECT ID,codigo,costo,cantidad,nombre FROM PRODUCTO";
+	dao.open(sql,[],false,response);
+
+	console.log(msgg,sql);
+	response.end;
+});
+
 // Create application/x-www-form-urlencoded parser
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 router.post('/process_post', urlencodedParser, function (req, res) {
